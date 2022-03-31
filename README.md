@@ -14,3 +14,7 @@ BOT
 
 CPU
 ![80c188](/80c188.jpg)
+
+Board schematics
+ 
+![80c188 Board schematic](/80c188_board_schematic.jpg)
