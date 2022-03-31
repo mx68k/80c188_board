@@ -9,3 +9,6 @@ TOP
 
 BOT 
 ![80c188_board_bot](/80c188_board_bot.jpg)
+
+CPU
+![80c188](/80c188.jpg)
