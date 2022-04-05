@@ -117,25 +117,25 @@ delay:			xor cx, cx
 start:			cli
 			cld
 			
-			mov	dx, 0FFA0h
-			mov	ax, 0F838h
-			out	dx, ax
+			mov dx, 0FFA0h
+			mov ax, 0F838h
+			out dx, ax
 			
-			mov	dx, 0FFA2h
-			mov	ax, 1F8h
-			out	dx, ax
+			mov dx, 0FFA2h
+			mov ax, 1F8h
+			out dx, ax
 			
-			mov	dx, 0FFA8h
-			mov	ax, 84B8h
-			out	dx, ax
+			mov dx, 0FFA8h
+			mov ax, 84B8h
+			out dx, ax
 			
-			mov	dx, 0FFA6h
-			mov	ax, 9F8h
-			out	dx, ax
+			mov dx, 0FFA6h
+			mov ax, 9F8h
+			out dx, ax
 			
-			mov	dx, 0FFA4h
-			mov	ax, 1
-			out	dx, ax
+			mov dx, 0FFA4h
+			mov ax, 1
+			out dx, ax
 							
 			mov dx, 00h	
 			mov al, 0FFh
