@@ -1,0 +1,219 @@
+     1                                  ;nasm -o 80c188_test.hex -f ith -l 80c188_test.lst 80c188_test.asm
+     2                                  ;hex2bin -R 32K -o 80c188_test.bin 80c188_test.hex 
+     3                                  
+     4                                  			bits 16
+     5                                  			cpu 186
+     6                                  			
+     7                                  			section io_test start=0000h vstart=0F8000h
+     8                                  
+     9 00000000 BA0000                  io_test:	mov dx, 00h	
+    10 00000003 B001                    			mov al, 01h
+    11 00000005 EE                      			out dx, al	
+    12                                  			
+    13 00000006 E88A00                  			call delay
+    14                                  
+    15 00000009 BA0000                  			mov dx, 00h	
+    16 0000000C B002                    			mov al, 02h
+    17 0000000E EE                      			out dx, al
+    18                                  			
+    19 0000000F E88100                  			call delay
+    20                                  			
+    21 00000012 BA0000                  			mov dx, 00h	
+    22 00000015 B004                    			mov al, 04h
+    23 00000017 EE                      			out dx, al
+    24                                  			
+    25 00000018 E87800                  			call delay
+    26                                  			
+    27 0000001B BA0000                  			mov dx, 00h	
+    28 0000001E B008                    			mov al, 08h
+    29 00000020 EE                      			out dx, al
+    30                                  			
+    31 00000021 E86F00                  			call delay
+    32                                  			
+    33 00000024 BA0000                  			mov dx, 00h	
+    34 00000027 B010                    			mov al, 10h
+    35 00000029 EE                      			out dx, al
+    36                                  			
+    37 0000002A E86600                  			call delay
+    38                                  			
+    39 0000002D BA0000                  			mov dx, 00h	
+    40 00000030 B020                    			mov al, 20h
+    41 00000032 EE                      			out dx, al
+    42                                  			
+    43 00000033 E85D00                  			call delay
+    44                                  
+    45 00000036 BA0000                  			mov dx, 00h	
+    46 00000039 B040                    			mov al, 40h
+    47 0000003B EE                      			out dx, al
+    48                                  			
+    49 0000003C E85400                  			call delay
+    50                                  
+    51 0000003F BA0000                  			mov dx, 00h	
+    52 00000042 B080                    			mov al, 80h
+    53 00000044 EE                      			out dx, al
+    54                                  			
+    55 00000045 E84B00                  			call delay
+    56                                  
+    57 00000048 BA0000                  			mov dx, 00h	
+    58 0000004B B080                    			mov al, 80h
+    59 0000004D EE                      			out dx, al
+    60                                  			
+    61 0000004E E84200                  			call delay
+    62                                  			
+    63 00000051 BA0000                  			mov dx, 00h	
+    64 00000054 B040                    			mov al, 40h
+    65 00000056 EE                      			out dx, al
+    66                                  			
+    67 00000057 E83900                  			call delay
+    68                                  			
+    69 0000005A BA0000                  			mov dx, 00h	
+    70 0000005D B020                    			mov al, 20h
+    71 0000005F EE                      			out dx, al
+    72                                  			
+    73 00000060 E83000                  			call delay
+    74                                  			
+    75 00000063 BA0000                  			mov dx, 00h	
+    76 00000066 B010                    			mov al, 10h
+    77 00000068 EE                      			out dx, al
+    78                                  			
+    79 00000069 E82700                  			call delay
+    80                                  			
+    81 0000006C BA0000                  			mov dx, 00h	
+    82 0000006F B008                    			mov al, 08h
+    83 00000071 EE                      			out dx, al
+    84                                  			
+    85 00000072 E81E00                  			call delay
+    86                                  			
+    87 00000075 BA0000                  			mov dx, 00h	
+    88 00000078 B004                    			mov al, 04h
+    89 0000007A EE                      			out dx, al
+    90                                  			
+    91 0000007B E81500                  			call delay
+    92                                  			
+    93 0000007E BA0000                  			mov dx, 00h	
+    94 00000081 B002                    			mov al, 02h
+    95 00000083 EE                      			out dx, al
+    96                                  			
+    97 00000084 E80C00                  			call delay
+    98                                  			
+    99 00000087 BA0000                  			mov dx, 00h	
+   100 0000008A B001                    			mov al, 01h
+   101 0000008C EE                      			out dx, al
+   102                                  			
+   103 0000008D E80300                  			call delay
+   104                                  
+   105 00000090 E96DFF                  			jmp io_test
+   106                                  
+   107 00000093 31C9                    delay:		xor cx, cx
+   108 00000095 E2FE                    			loop $
+   109 00000097 31C9                    			xor cx, cx
+   110 00000099 E2FE                    			loop $
+   111 0000009B 31C9                    			xor cx, cx
+   112 0000009D E2FE                    			loop $
+   113 0000009F C3                      			ret
+   114                                  
+   115                                  			section start start=07F00h vstart=0FFF00h
+   116                                  			
+   117 00000000 FA                      start:		cli
+   118 00000001 FC                      			cld
+   119                                  			
+   120 00000002 BAA0FF                  			mov	dx, 0FFA0h
+   121 00000005 B838F8                  			mov	ax, 0F838h
+   122 00000008 EF                      			out	dx, ax
+   123                                  			
+   124 00000009 BAA2FF                  			mov	dx, 0FFA2h
+   125 0000000C B8F801                  			mov	ax, 1F8h
+   126 0000000F EF                      			out	dx, ax
+   127                                  			
+   128 00000010 BAA8FF                  			mov	dx, 0FFA8h
+   129 00000013 B8B884                  			mov	ax, 84B8h
+   130 00000016 EF                      			out	dx, ax
+   131                                  			
+   132 00000017 BAA6FF                  			mov	dx, 0FFA6h
+   133 0000001A B8F809                  			mov	ax, 9F8h
+   134 0000001D EF                      			out	dx, ax
+   135                                  			
+   136 0000001E BAA4FF                  			mov	dx, 0FFA4h
+   137 00000021 B80100                  			mov	ax, 1
+   138 00000024 EF                      			out	dx, ax
+   139                                  							
+   140 00000025 BA0000                  			mov dx, 00h	
+   141 00000028 B0FF                    			mov al, 0FFh
+   142 0000002A EE                      			out dx, al
+   143                                  				
+   144 0000002B 31C9                    			xor cx, cx
+   145 0000002D E2FE                    			loop $
+   146 0000002F 31C9                    			xor cx, cx
+   147 00000031 E2FE                    			loop $	
+   148 00000033 31C9                    			xor cx, cx
+   149 00000035 E2FE                    			loop $
+   150 00000037 31C9                    			xor cx, cx
+   151 00000039 E2FE                    			loop $	
+   152 0000003B 31C9                    			xor cx, cx
+   153 0000003D E2FE                    			loop $
+   154 0000003F 31C9                    			xor cx, cx
+   155 00000041 E2FE                    			loop $	
+   156                                  			
+   157 00000043 BA0000                  			mov dx, 00h	
+   158 00000046 B055                    			mov al, 55h
+   159 00000048 EE                      			out dx, al
+   160                                  			
+   161 00000049 31C9                    			xor cx, cx
+   162 0000004B E2FE                    			loop $
+   163 0000004D 31C9                    			xor cx, cx
+   164 0000004F E2FE                    			loop $	
+   165 00000051 31C9                    			xor cx, cx
+   166 00000053 E2FE                    			loop $
+   167 00000055 31C9                    			xor cx, cx
+   168 00000057 E2FE                    			loop $	
+   169 00000059 31C9                    			xor cx, cx
+   170 0000005B E2FE                    			loop $
+   171 0000005D 31C9                    			xor cx, cx
+   172 0000005F E2FE                    			loop $		
+   173                                  			
+   174 00000061 BA0000                  			mov dx, 00h	
+   175 00000064 B0AA                    			mov al, 0AAh
+   176 00000066 EE                      			out dx, al
+   177                                  			
+   178 00000067 31C9                    			xor cx, cx
+   179 00000069 E2FE                    			loop $
+   180 0000006B 31C9                    			xor cx, cx
+   181 0000006D E2FE                    			loop $	
+   182 0000006F 31C9                    			xor cx, cx
+   183 00000071 E2FE                    			loop $
+   184 00000073 31C9                    			xor cx, cx
+   185 00000075 E2FE                    			loop $	
+   186 00000077 31C9                    			xor cx, cx
+   187 00000079 E2FE                    			loop $
+   188 0000007B 31C9                    			xor cx, cx
+   189 0000007D E2FE                    			loop $	
+   190                                  			
+   191 0000007F BA0000                  			mov dx, 00h	
+   192 00000082 B000                    			mov al, 00h
+   193 00000084 EE                      			out dx, al
+   194                                  			
+   195 00000085 31C9                    			xor cx, cx
+   196 00000087 E2FE                    			loop $
+   197 00000089 31C9                    			xor cx, cx
+   198 0000008B E2FE                    			loop $	
+   199 0000008D 31C9                    			xor cx, cx
+   200 0000008F E2FE                    			loop $
+   201 00000091 31C9                    			xor cx, cx
+   202 00000093 E2FE                    			loop $	
+   203 00000095 31C9                    			xor cx, cx
+   204 00000097 E2FE                    			loop $
+   205 00000099 31C9                    			xor cx, cx
+   206 0000009B E2FE                    			loop $	
+   207                                  			
+   208 0000009D B80000                  			mov ax, 00h			
+   209 000000A0 8ED8                    			mov ds, ax
+   210 000000A2 8EC0                    			mov es, ax
+   211 000000A4 8ED0                    			mov ss, ax			
+   212 000000A6 BC8C00                  			mov sp, 8Ch	
+   213                                  			
+   214 000000A9 EA008000F0              			jmp 0F000h:8000h
+   215                                  
+   216                                  			section reset start=07FF0h vstart=0FFFF0h	
+   217                                  			
+   218 00000000 EA[0000]00F0            			jmp 0F000h:start		
+   219                                  
