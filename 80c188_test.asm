@@ -6,7 +6,7 @@
 			
 			section io_test start=0000h vstart=0F8000h
 
-io_test:	mov dx, 00h	
+io_test:		mov dx, 00h	
 			mov al, 01h
 			out dx, al	
 			
@@ -104,7 +104,7 @@ io_test:	mov dx, 00h
 
 			jmp io_test
 
-delay:		xor cx, cx
+delay:			xor cx, cx
 			loop $
 			xor cx, cx
 			loop $
@@ -114,7 +114,7 @@ delay:		xor cx, cx
 
 			section start start=07F00h vstart=0FFF00h
 			
-start:		cli
+start:			cli
 			cld
 			
 			mov	dx, 0FFA0h
