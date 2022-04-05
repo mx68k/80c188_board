@@ -1,0 +1,50 @@
+;PALASM Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    80C188 address decoder for Streamer Board
+PATTERN  Non Latched
+REVISION 0
+AUTHOR   mx
+COMPANY
+DATE     03/31/22
+
+CHIP MYPAL1  PALCE16V8                              ; Device not selected
+
+;---------------------------------- PIN Declarations ---------------
+;PIN 1 	CLK                           	    ; COMBINATORIAL 
+											; REGISTERED 
+;Pin 2	A0		COMBINATORIAL
+;Pin 3	A12		COMBINATORIAL
+;Pin 4	A13		COMBINATORIAL
+;Pin 5	A14		COMBINATORIAL
+;Pin 6	A15		COMBINATORIAL
+;Pin 7	MW		COMBINATORIAL
+;Pin 8	IR		COMBINATORIAL
+;Pin 9 	IW		COMBINATORIAL
+;Pin 10	GND
+
+;Pin 11	OE
+Pin 11	GND_IN	COMBINATORIAL                                   
+;Pin 12	IR_A0      COMBINATORIAL                    
+;Pin 13	IR_A1      COMBINATORIAL                       
+;Pin 14	IW_A1      COMBINATORIAL                      
+;Pin 15	MW_9000    COMBINATORIAL                 
+Pin 17	OE_373    COMBINATORIAL
+
+;----------------------------------- Boolean Equation Segment ------
+
+EQUATIONS
+
+OE_373 := GND_IN
+
+;o7 :=  o7 :+: (o6 * o5 * o4 * o3 * o2 * o1 * o0) ; Use ":=" For REGISTERED Equation
+
+;/IR_A0 =  /A0 * /A12 * A13 * /A14 * A15 * /IR 
+;/IR_A1 =  A0 * /A12 * A13 * /A14 * A15 * /IR
+;/IW_A1 =  A0 * /A12 * A13 * /A14 * A15 * /IW
+;/MW_9000 =  A12 * /A13 * /A14 * A15 * /MW * IR * IW
+
+
+
+
+
